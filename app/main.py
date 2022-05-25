@@ -3,6 +3,7 @@ from flask_mail import *
 from random import *
 from helpers import *
 import sqlite3
+
 app = Flask(__name__)
 
 
