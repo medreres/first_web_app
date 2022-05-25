@@ -22,7 +22,7 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 
 # homepage
-@app.route("/")
+@app.route("/", methods=["GET"])
 def homepage():
     return render_template("homepage.html")
 
