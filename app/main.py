@@ -3,9 +3,9 @@ from flask_mail import *
 from random import *
 from helpers import *
 import sqlite3
-
-
 app = Flask(__name__)
+
+
 app.secret_key = "super secret key"
 app.config["MAIL_SERVER"] = 'smtp.gmail.com'
 app.config["MAIL_PORT"] = 465
