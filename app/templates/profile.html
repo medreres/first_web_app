@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block title %}
+: Profile
+{% endblock %}
+{% block main %}
+<div align="center">
+    <p> First name: {{ session["first_name"] }}</p>
+    <p> Last Name: {{ session["last_name"] }}</p>
+    <p> Email: {{ session["email"] }}</p>
+    <p> Grade: {{ session["year"] }}</p>
+    <p> Status: {{ status }}</p>
+    <p> User id: {{ session["user_id"] }}</p>
+</div>
+{% endblock %}

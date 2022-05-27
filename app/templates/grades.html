@@ -2,6 +2,109 @@
 {% block title %}
 : Grades
 {% endblock %}
-{% block main %}    
-This is grades
+{% block main %}
+{% if session["level"] == 0 %}
+<table class="table" style="text-align:center;">
+    <thead>
+        <tr>
+            <th></th>
+            <th colspan="100" scope="col">Grades</th>
+        </tr>
+    </thead>
+    {% if math %}
+    <tr>
+        <th scope="row">Math</th>
+        {% for grade in math %}
+        <td> {{ grade[3] }} <br> {{ grade[4]}} </td>
+        {% endfor %}
+    </tr>
+    {% endif %}
+    {% if ukrainian %}
+    <tr>
+        <th scope="row">Ukrainian</th>
+        {% for grade in ukrainian %}
+        <td> {{ grade[3] }} <br> {{ grade[4]}} </td>
+        {% endfor %}
+    </tr>
+    {% endif %}
+    {% if history %}
+    <tr>
+        <th scope="row">History</th>
+        {% for grade in history %}
+        <td> {{ grade[3] }} <br> {{ grade[4]}} </td>
+        {% endfor %}
+    </tr>
+    {% endif %}
+    {% if informatics %}
+    <tr>
+        <th scope="row">Informatics</th>
+        {% for grade in informatics %}
+        <td> {{ grade[3] }} <br> {{ grade[4]}} </td>
+        {% endfor %}
+    </tr>
+    {% endif %}
+    {% if english %}
+    <tr>
+        <th scope="row">English</th>
+        {% for grade in english %}
+        <td> {{ grade[3] }} <br> {{ grade[4]}} </td>
+        {% endfor %}
+    </tr>
+    {% endif %}
+    {% if history_ukraine %}
+    <tr>
+        <th scope="row">History of Ukraine</th>
+        {% for grade in history_ukraine %}
+        <td> {{ grade[3] }} <br> {{ grade[4]}} </td>
+        {% endfor %}
+    </tr>
+    {% endif %}
+    {% elif session["level"] == 1 %}
+    <table class="table" style="text-align:center;">
+        <thead>
+            <tr>
+                <th scope="row" style="width:20px;">ID</th>
+                <th scope="row">Subject</th>
+                <th scope="row">Grade</th>
+                <th scope="row">Student(ID)</th>
+                <th scope="row">Date</th>
+            </tr>
+        </thead>
+        {% for grade in grades %}
+        <tr>
+            <td style="width:20px;">{{ grade[0] }}</td>
+            <td> {{ grade[5] }} </td>
+            <td> {{ grade[3] }}</td>
+            <td> {{ grade[2] }}</td>
+            <td> {{ grade[4] }}</td>
+        </tr>
+        {% endfor %}
+        <form action="/grades" method="post">
+            <tr>
+                <td></td>
+                <td align="center" style="width: 15%">
+                    <select name="subject" id="subject" class="form-select" aria-label="Default select example"
+                        required>
+                        <option selected disabled>Subject</option>
+                        <option value="MATH">Math</option>
+                        <option value="UKRAINIAN">Ukrainian</option>
+                        <option value="HISTORY">History</option>
+                        <option value="INFORMATICS">Informatics</option>
+                        <option value="ENGLISH">English</option>
+                        <option value="HISTORY_UKRAINE">History of Ukraine</option>
+                    </select>
+                </td>
+                <td align="center"><input id="grade" name="grade" class="input-group mb-3"
+                        aria-label="Default select example" type="number" max="12" min="1" required> </td>
+                <td align="center"><input id="student_id" name="student_id" class="input-group mb-3 w-auto"
+                        type="number" required> </td>
+                <td><button class="btn btn-primary" type="submit">Submit</button></td>
+
+            </tr>
+        </form>
+    </table>
+    {% elif session["level"] == 2 %}
+    <p>You are an admin</p>
+    {% endif %}
+</table>
 {% endblock %}
