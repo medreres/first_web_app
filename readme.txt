@@ -1,4 +1,4 @@
-Revista
+**Revista**
 #### Video Demo:  <https://youtu.be/7XAisu6pYUM>
 #### Description:
 Online gradebook for students of Kulchytski School
